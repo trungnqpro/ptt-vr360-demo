@@ -16,7 +16,7 @@ import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 const handleClick = (swiper: any, event: any) => {
   console.log('[handleClick]', { swiper, event });
   if (swiper.activeIndex == 4) {
-    // redirect('/suquantam')
+    location.href = '/suquantam'
   }
 };
 

@@ -12,6 +12,10 @@ export default async function Navbar() {
   // const menu = await getMenu('next-js-frontend-header-menu');
   const menu = [
     {
+      title: 'Trang chủ',
+      path: '/'
+    },
+    {
       title: 'Phòng khánh tiết',
       path: '/khanhtiet'
     },
