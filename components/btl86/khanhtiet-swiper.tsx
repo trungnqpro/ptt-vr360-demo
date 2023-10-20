@@ -11,10 +11,9 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 // import required modules
-import React from 'react';
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 
-const handleClick = (swiper, event) => {
+const handleClick = (swiper: any, event: any) => {
   console.log('[handleClick]', { swiper, event });
   if (swiper.activeIndex == 4) {
     // redirect('/suquantam')
