@@ -11,14 +11,12 @@ import 'swiper/css/pagination';
 import './styles.css';
 
 // import required modules
-import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination, Zoom } from 'swiper/modules';
 
-const handleClick = (swiper: any, event: any) => {
-  console.log('[handleClick]', { swiper, event });
-  if (swiper.activeIndex == 4) {
-    location.href = '/suquantam'
-  }
-};
+
+const handleZoomChange = (swiper: any, scale: any) => {
+  console.log("[handleZoomChange]", {swiper, scale})
+}
 
 export default function KhanhTietSwiper() {
   return (
@@ -31,9 +29,14 @@ export default function KhanhTietSwiper() {
         pagination={{
           clickable: true
         }}
-        modules={[EffectFade, Navigation, Pagination]}
+        modules={[EffectFade, Navigation, Pagination, Zoom]}
         className="kt_swiper"
-        onClick={handleClick}
+        onZoomChange={handleZoomChange}
+        grabCursor={true}
+        zoom={{
+          minRatio: 1,
+          maxRatio: 2.5
+        }}
       >
         <SwiperSlide>
           <img src="/images/khanhtiet/cuccntt.jpeg" />
@@ -42,12 +45,14 @@ export default function KhanhTietSwiper() {
           <img src="/images/khanhtiet/phudieu_phanvangiang.jpeg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/images/khanhtiet/phudieu.jpg" />
+          <div className="swiper-zoom-container">
+            <img src="/images/khanhtiet/phudieu.jpg" />
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <img src="/images/khanhtiet/phudieu_ngoxuanlich.jpeg" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide onClick={() => location.href='/suquantam'}>
           <img src="/images/khanhtiet/suquantam.jpeg" />
         </SwiperSlide>
         <SwiperSlide>
