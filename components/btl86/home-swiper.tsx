@@ -24,7 +24,7 @@ export default function HomeSwiper() {
           clickable: true
         }}
         modules={[EffectFade, Navigation, Pagination]}
-        className="mySwiper"
+        className="homeSwiper"
       >
         <SwiperSlide>
           <img src="/images/home/nhachinh4.jpg" />

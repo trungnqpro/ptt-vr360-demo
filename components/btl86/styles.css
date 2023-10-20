@@ -1,8 +1,7 @@
-.mySwiper {
-  height: 100vh;
+.homeSwiper img {
+  height: calc(100vh - 72px);
 }
 
-.kt_swiper {
-  width: 600px;
-  height: 600px;
+.kt_swiper img {
+  height: calc(100vh - 72px);
 }
