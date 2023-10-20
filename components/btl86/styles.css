@@ -1,7 +1,9 @@
 .homeSwiper img {
   height: calc(100vh - 72px);
+  width: 100%;
 }
 
 .kt_swiper img {
   height: calc(100vh - 72px);
+  width: 100%;
 }

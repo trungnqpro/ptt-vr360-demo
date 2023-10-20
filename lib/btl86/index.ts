@@ -387,21 +387,21 @@ export async function getLeaderDetail({
   console.log('[getLeaderDetail]', label);
   let result: Leader | undefined;
   return await new Promise((resolve, reject) => {
-    switch (label) {
-      case 'phan-van-giang':
-        result = sqtImages.find((img) => img.id === label);
-        break;
+    result = sqtImages.find((img) => img.id === label);
+    // switch (label) {
+    //   case 'phan-van-giang':
+    //     break;
 
-      case 'ngo-xuan-lich':
-        result = sqtImages.find((img) => img.id === label);
-        break;
-      case 'nguyen-tan-cuong':
-        result = sqtImages.find((img) => img.id === label);
-        break;
+    //   case 'ngo-xuan-lich':
+    //     result = sqtImages.find((img) => img.id === label);
+    //     break;
+    //   case 'nguyen-tan-cuong':
+    //     result = sqtImages.find((img) => img.id === label);
+    //     break;
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
     resolve(result);
   });
 }
