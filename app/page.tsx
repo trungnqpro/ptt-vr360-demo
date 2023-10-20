@@ -1,0 +1,21 @@
+import { Suspense } from 'react';
+import HomeSwiper from '../components/btl86/home-swiper';
+
+export const runtime = 'edge';
+
+export const metadata = {
+  description: 'High-performance ecommerce store built with Next.js, Vercel, and Shopify.',
+  openGraph: {
+    type: 'website'
+  }
+};
+
+export default async function HomePage() {
+  return (
+    <>
+      <Suspense>
+        <HomeSwiper />
+      </Suspense>
+    </>
+  );
+}
