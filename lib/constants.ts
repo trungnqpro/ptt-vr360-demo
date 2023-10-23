@@ -106,7 +106,8 @@ export const sqtImages: Leader[] = [
     actionImgs: [
       { url: '/images/actions/text.png', name: 'Văn bản', type: 'text' },
       { url: '/images/actions/video.webp', name: 'Video', type: 'video' },
-      { url: '/images/actions/audio.png', name: 'Audio', type: 'audio' }
+      { url: '/images/actions/audio.png', name: 'Audio', type: 'audio' },
+      { url: '/images/actions/more.png', name: 'Liên quan', type: 'related' }
     ]
   },
   {
@@ -135,7 +136,8 @@ export const sqtImages: Leader[] = [
     actionImgs: [
       { url: '/images/actions/text.png', name: 'Văn bản', type: 'text' },
       { url: '/images/actions/video.webp', name: 'Video', type: 'video' },
-      { url: '/images/actions/audio.png', name: 'Audio', type: 'audio' }
+      { url: '/images/actions/audio.png', name: 'Audio', type: 'audio' },
+      { url: '/images/actions/more.png', name: 'Liên quan', type: 'related' }
     ]
   },
   {
@@ -186,7 +188,8 @@ export const sqtImages: Leader[] = [
     actionImgs: [
       { url: '/images/actions/text.png', name: 'Văn bản', type: 'text' },
       { url: '/images/actions/video.webp', name: 'Video', type: 'video' },
-      { url: '/images/actions/audio.png', name: 'Audio', type: 'audio' }
+      { url: '/images/actions/audio.png', name: 'Audio', type: 'audio' },
+      { url: '/images/actions/more.png', name: 'Liên quan', type: 'related' }
     ]
   },
   {

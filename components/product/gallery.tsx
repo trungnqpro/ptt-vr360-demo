@@ -9,11 +9,13 @@ import { usePathname, useSearchParams } from 'next/navigation';
 export function Gallery({
   images,
   mainImg,
-  openVideo
+  openVideo,
+  openRelated
 }: {
   images: { src: string; altText: string; id: string; type: string }[];
   mainImg: { src: string; altText: string; id: string };
   openVideo: (open: boolean) => void;
+  openRelated: (open: boolean) => void;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -68,9 +70,10 @@ export function Gallery({
                       width={40}
                       height={40}
                     />
-                  ) : (
-                    <GridTileImage alt={image.altText} src={image.src} width={40} height={40} />
-                  )}
+                  ) :
+                  image.type == 'related' 
+                    ? <GridTileImage onClick={() => openRelated(true)} alt={image.altText} src={image.src} width={40} height={40} />
+                  : <GridTileImage alt={image.altText} src={image.src} width={40} height={40} />}
                 </Link>
               </li>
             );

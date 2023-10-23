@@ -3,6 +3,7 @@
 import { notFound } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
+import ModalRelated from 'components/btl86/related-modal';
 import ModalVideo from 'components/btl86/video-modal';
 import { GridTileImage } from 'components/grid/tile';
 import Footer from 'components/layout/footer';
@@ -16,6 +17,7 @@ export const runtime = 'edge';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalOpenRelated, setModalOpenRelated] = useState<boolean>(false);
 
   const product: Leader | undefined = await getLeaderDetail({ label: params.handle });
 
@@ -50,6 +52,12 @@ export default async function ProductPage({ params }: { params: { handle: string
           setModalOpen={setModalOpen}
         />
       )}
+      
+      {<ModalRelated 
+          modalOpenRelated={modalOpenRelated}
+          setModalOpenRelated={setModalOpenRelated} 
+          relatedImgs={product.images} />}
+
       <div className="mx-auto max-w-screen-2xl px-4">
         <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
           <div className="h-full w-full basis-full lg:basis-4/6">
@@ -62,6 +70,7 @@ export default async function ProductPage({ params }: { params: { handle: string
               }))}
               mainImg={{ src: product.url, altText: product.name, id: product.id }}
               openVideo={setModalOpen}
+              openRelated={setModalOpenRelated}
             />
           </div>
 
@@ -70,9 +79,10 @@ export default async function ProductPage({ params }: { params: { handle: string
           </div>
         </div>
         <Suspense>
-          <RelatedProducts relatedProducts={product.images} />
+          <RelatedProducts relatedProducts={product.images}  />
         </Suspense>
       </div>
+
 
       <Suspense>
         <Footer />
@@ -86,7 +96,7 @@ async function RelatedProducts({ relatedProducts }: { relatedProducts: LeaderMin
 
   return (
     <div className="py-8">
-      <h2 className="mb-4 text-2xl font-bold">Ảnh bổ sung</h2>
+      <h2 className="mb-4 text-2xl font-bold">Ảnh liên quan</h2>
       <ul className="flex w-full gap-4 overflow-x-auto pt-1">
         {relatedProducts.map((product) => (
           <li
