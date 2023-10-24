@@ -18,6 +18,7 @@ export const runtime = 'edge';
 export default async function ProductPage({ params }: { params: { handle: string } }) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalOpenRelated, setModalOpenRelated] = useState<boolean>(false);
+  const [isPlayAudio, setIsPlayAudio] = useState<boolean>(false);
 
   const product: Leader | undefined = await getLeaderDetail({ label: params.handle });
 
@@ -52,7 +53,7 @@ export default async function ProductPage({ params }: { params: { handle: string
           setModalOpen={setModalOpen}
         />
       )}
-      
+
       {<ModalRelated 
           modalOpenRelated={modalOpenRelated}
           setModalOpenRelated={setModalOpenRelated} 
@@ -71,6 +72,9 @@ export default async function ProductPage({ params }: { params: { handle: string
               mainImg={{ src: product.url, altText: product.name, id: product.id }}
               openVideo={setModalOpen}
               openRelated={setModalOpenRelated}
+              audioUrl={product.audioUrl}
+              isPlayAudio={isPlayAudio}
+              setPlayAudio={setIsPlayAudio}
             />
           </div>
 

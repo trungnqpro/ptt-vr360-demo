@@ -282,6 +282,7 @@ export type Leader = {
   name: string;
   description: string;
   url: string;
+  audioUrl: string;
   videoUrl: string;
   images: LeaderMinor[];
   actionImgs: ImgAction[];

@@ -1,5 +1,6 @@
 'use client';
 
+import AudioPlayer from 'components/btl86/audio-player';
 import { GridTileImage } from 'components/grid/tile';
 import { createUrl } from 'lib/utils';
 import Image from 'next/image';
@@ -10,12 +11,18 @@ export function Gallery({
   images,
   mainImg,
   openVideo,
-  openRelated
+  openRelated,
+  audioUrl,
+  isPlayAudio,
+  setPlayAudio,
 }: {
   images: { src: string; altText: string; id: string; type: string }[];
   mainImg: { src: string; altText: string; id: string };
   openVideo: (open: boolean) => void;
   openRelated: (open: boolean) => void;
+  audioUrl: string,
+  isPlayAudio: boolean;
+  setPlayAudio: (open: boolean) => void;
 }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -73,7 +80,9 @@ export function Gallery({
                   ) :
                   image.type == 'related' 
                     ? <GridTileImage onClick={() => openRelated(true)} alt={image.altText} src={image.src} width={40} height={40} />
-                  : <GridTileImage alt={image.altText} src={image.src} width={40} height={40} />}
+                  // : image.type == 'audio' ? <GridTileImage onClick={() => {playAudio(true); console.log("playAudio(true)")}}  alt={image.altText} src={image.src} width={40} height={40} /> 
+                  : image.type == 'audio' && audioUrl ? <AudioPlayer src={audioUrl} isPlayAudio={isPlayAudio} setPlayAudio={setPlayAudio} />
+                  : <GridTileImage  alt={image.altText} src={image.src} width={40} height={40} /> }
                 </Link>
               </li>
             );
