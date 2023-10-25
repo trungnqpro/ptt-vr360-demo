@@ -81,7 +81,7 @@ export function Gallery({
                   image.type == 'related' 
                     ? <GridTileImage onClick={() => openRelated(true)} alt={image.altText} src={image.src} width={40} height={40} />
                   // : image.type == 'audio' ? <GridTileImage onClick={() => {playAudio(true); console.log("playAudio(true)")}}  alt={image.altText} src={image.src} width={40} height={40} /> 
-                  : image.type == 'audio' && audioUrl ? <AudioPlayer src={audioUrl} isPlayAudio={isPlayAudio} setPlayAudio={setPlayAudio} />
+                  : image.type == 'audio' && audioUrl ? <AudioPlayer src={audioUrl} />
                   : <GridTileImage  alt={image.altText} src={image.src} width={40} height={40} /> }
                 </Link>
               </li>
