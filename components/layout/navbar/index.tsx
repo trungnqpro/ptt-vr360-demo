@@ -16,7 +16,7 @@ export default async function Navbar() {
       path: '/'
     },
     {
-      title: 'Phòng khánh tiết',
+      title: 'Khánh tiết',
       path: '/khanhtiet'
     },
     {

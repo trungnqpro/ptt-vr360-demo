@@ -3,14 +3,14 @@
 
 interface AudioPlayerProps {
   src: string;
-  isPlayAudio: boolean,
-  setPlayAudio: (play: boolean) => void;
+  // isPlayAudio: boolean,
+  // setPlayAudio: (play: boolean) => void;
 }
 
 export default function AudioPlayer({
   src,
-  isPlayAudio,
-  setPlayAudio
+  // isPlayAudio,
+  // setPlayAudio
 }: AudioPlayerProps) {
   // const audioRef = useRef();
   // const [duration, setDuration] = useState(0);
@@ -29,7 +29,7 @@ export default function AudioPlayer({
           controls
           // onLoadedData={handleLoadedData}
           // onTimeUpdate={() => setCurrentTime(audioRef?.current?.currentTime)}
-          onEnded={() => setPlayAudio(false)}
+          // onEnded={() => setPlayAudio(false)}
         />
     </div>
   );

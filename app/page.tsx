@@ -1,3 +1,4 @@
+import AudioPlayer from 'components/btl86/audio-player';
 import { Suspense } from 'react';
 import HomeSwiper from '../components/btl86/home-swiper';
 
@@ -15,6 +16,7 @@ export default async function HomePage() {
     <>
       <Suspense>
         <HomeSwiper />
+        <div style={{position:'absolute', zIndex: 2, top: '25%', left: '40%'}}><AudioPlayer src='/audios/home.wav' /></div>
       </Suspense>
     </>
   );

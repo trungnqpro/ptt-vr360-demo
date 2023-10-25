@@ -1,8 +1,8 @@
+import AudioPlayer from 'components/btl86/audio-player';
 import Grid from 'components/grid';
 import ProductGridItems from 'components/layout/product-grid-items';
 import { getLeaders } from 'lib/btl86';
 import { defaultSort, sorting } from 'lib/constants';
-import React from 'react';
 
 export const runtime = 'edge';
 
@@ -34,6 +34,7 @@ export default async function LeadersPage({
       ) : null}
       {leaders.length > 0 ? (
         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div style={{position:'absolute', 'zIndex': '2', top: '1%', left: '40%'}}><AudioPlayer src='/audios/suquantam.wav' /></div>
           <ProductGridItems leaders={leaders} />
         </Grid>
       ) : null}
