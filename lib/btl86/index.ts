@@ -1,4 +1,4 @@
-import { SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS, sqtImages } from 'lib/constants';
+import { TAGS, sqtImages } from 'lib/constants';
 import { isShopifyError } from 'lib/type-guards';
 import { ensureStartsWith } from 'lib/utils';
 // import { headers } from 'next/headers';
@@ -54,7 +54,7 @@ import {
 const domain = process.env.SHOPIFY_STORE_DOMAIN
   ? ensureStartsWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://')
   : '';
-const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
+const endpoint = `http://localhost:3101`;
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
 
 type ExtractVariables<T> = T extends { variables: object } ? T['variables'] : never;
@@ -116,30 +116,28 @@ export async function shopifyFetch<T>({
 }
 
 export async function btl86Fetch<T>({
+  apiPath,
   cache = 'force-cache',
-  // headers,
+  headers,
   query,
   tags,
   variables
 }: {
+  apiPath: string,
   cache?: RequestCache;
-  // headers?: HeadersInit;
+  headers?: HeadersInit;
   query: string;
   tags?: string[];
   variables?: ExtractVariables<T>;
 }): Promise<{ status: number; body: T } | never> {
   try {
-    const result = await fetch(endpoint, {
-      method: 'POST',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      //   'X-Shopify-Storefront-Access-Token': key,
-      //   ...headers
-      // },
-      body: JSON.stringify({
-        ...(query && { query }),
-        ...(variables && { variables })
-      }),
+    const result = await fetch(`${endpoint}/${apiPath}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        ...headers
+      },
+      ...(query && { query }),
       cache,
       ...(tags && { next: { tags } })
     });
@@ -445,18 +443,26 @@ export async function getLeaderRelate({
 
 export async function getLeaders({
   label,
+  q,
   reverse,
   sortKey
 }: {
-  label: string;
+  label: string | undefined;
   reverse?: boolean;
+  q: string | undefined,
   sortKey?: string;
 }): Promise<LeaderMinor[]> {
   console.log('[getLeaderRelate]', label);
-  return await new Promise((resolve, reject) => {
-    const result: LeaderMinor[] = sqtImages;
-    resolve(result);
-  });
+  // return await new Promise((resolve, reject) => {
+  //   const result: LeaderMinor[] = sqtImages;
+  //   resolve(result);
+  // });
+  const res = btl86Fetch<LeaderMinor[]>({
+    apiPath: '/public/leaders',
+    query: `type=${label}&q=${q}`
+  })
+  console.log("[getLeaders] res:", res)
+  return []
 }
 
 export async function getCollections(): Promise<Collection[]> {

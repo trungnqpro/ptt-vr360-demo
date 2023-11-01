@@ -1,11 +1,7 @@
-import Cart from 'components/cart';
-import OpenCart from 'components/cart/open-cart';
-import LogoSquare from 'components/logo-square';
 // import { getMenu } from 'lib/btl86';
 // import { Menu } from 'lib/btl86/types';
-import Link from 'next/link';
-import { Suspense } from 'react';
 import MobileMenu from './mobile-menu';
+import SideMenu from './side-menu';
 const { SITE_NAME } = process.env;
 
 export default async function Navbar() {
@@ -20,46 +16,23 @@ export default async function Navbar() {
       path: '/khanhtiet'
     },
     {
+      title: 'Các đồng chí lãnh đạo, chỉ huy qua các thời kỳ',
+      path: '/'
+    },
+    {
+      title: 'Quá trình hình thành và phát triển BTL86',
+      path: '/'
+    },
+    {
       title: 'Sự quan tâm của lãnh đạo, Đảng và Nhà nước',
       path: '/suquantam'
     }
   ];
 
   return (
-    <nav className="relative flex items-center justify-between p-4 lg:px-6">
+    <nav className="relative flex items-center justify-between">
       <div className="block flex-none md:hidden"><MobileMenu menu={menu} /></div>
-      <div className="flex w-full items-center">
-        <div className="flex w-full">
-          <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
-            <LogoSquare />
-            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {SITE_NAME}
-            </div>
-          </Link>
-          {menu.length ? (
-            <ul className="hidden gap-6 text-sm md:flex md:items-center">
-              {menu.map((item: any) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.path}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-        {/* <div className="hidden justify-center md:flex md:w-1/3">
-          <Search />
-        </div> */}
-        <div className="flex justify-end md:w-1/3">
-          <Suspense fallback={<OpenCart />}>
-            <Cart />
-          </Suspense>
-        </div>
-      </div>
+      <div className="hidden md:flex h-full w-52 absolute top-8 left-8 z-10"><SideMenu menu={menu} /></div>
     </nav>
   );
 }
