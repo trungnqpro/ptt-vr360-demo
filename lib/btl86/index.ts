@@ -116,14 +116,14 @@ export async function shopifyFetch<T>({
 }
 
 export async function btl86Fetch<T>({
-  apiPath,
+  // apiPath,
   cache = 'force-cache',
   headers,
   query,
   tags,
   variables
 }: {
-  apiPath: string,
+  // apiPath: string,
   cache?: RequestCache;
   headers?: HeadersInit;
   query: string;
@@ -131,7 +131,8 @@ export async function btl86Fetch<T>({
   variables?: ExtractVariables<T>;
 }): Promise<{ status: number; body: T } | never> {
   try {
-    const result = await fetch(`${endpoint}/${apiPath}`, {
+    const result = await fetch(`${endpoint}`, {
+      // const result = await fetch(`${endpoint}/${apiPath}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
