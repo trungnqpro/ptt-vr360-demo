@@ -453,16 +453,16 @@ export async function getLeaders({
   sortKey?: string;
 }): Promise<LeaderMinor[]> {
   console.log('[getLeaderRelate]', label);
-  // return await new Promise((resolve, reject) => {
-  //   const result: LeaderMinor[] = sqtImages;
-  //   resolve(result);
-  // });
-  const res = btl86Fetch<LeaderMinor[]>({
-    apiPath: '/public/leaders',
-    query: `type=${label}&q=${q}`
-  })
-  console.log("[getLeaders] res:", res)
-  return []
+  return await new Promise((resolve, reject) => {
+    const result: LeaderMinor[] = sqtImages;
+    resolve(result);
+  });
+  // const res = btl86Fetch<LeaderMinor[]>({
+  //   apiPath: '/public/leaders',
+  //   query: `type=${label}&q=${q}`
+  // })
+  // console.log("[getLeaders] res:", res)
+  // return []
 }
 
 export async function getCollections(): Promise<Collection[]> {
